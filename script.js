@@ -33,21 +33,21 @@ function play(){
 function makeGuess(){
     let guess = parseInt(document.getElementById("guess").value);
     if(isNaN(guess)){
-        msg.textContent = "Please enter valid number";
+        msg.textContent = playerName + " please enter valid number";
         return;
     }
     guessCount++;
 
     if(guess == answer){
-        msg.textContent = "Correct! It took " + guessCount + " tries.";
+        msg.textContent = "Correct " + playerName + " it took " + guessCount + " tries.";
         updateScore(guessCount);
         resetGame();
     }
     else if(guess < answer){
-        msg.textContent = "Too low, try again.";
+        msg.textContent = "Too low, " + playerName + " try again.";
     }
     else{
-        msg.textContent = "Too high, try again."
+        msg.textContent = "Too high, " + playerName " try again.";
     }
     
 }
