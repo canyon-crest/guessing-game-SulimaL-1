@@ -1,5 +1,6 @@
 // add javascript here
 let answer = 0;
+let range = 0;
 let guessCount = 0;
 let playerName = prompt("What is your name?")
 playerName = playerName.charAt(0).toUpperCase() + playerName.slice(1).toLowerCase();
@@ -8,9 +9,10 @@ const scores = [];
 
 document.getElementById("playBtn").addEventListener("click", play);
 document.getElementById("guessBtn").addEventListener("click", makeGuess);
+document.getElementById("giveUpBtn").addEventListener("click", giveUp);
 
 function play(){
-    let range = 0;
+    range = 0;
     let levels = document.getElementsByName("level")
 
     for(let i=0; i<levels.length; i++){
@@ -50,6 +52,11 @@ function makeGuess(){
         msg.textContent = "Too high, " + playerName + " try again.";
     }
     
+}
+
+function giveUp() {
+    updateScore(range);
+    resetGame();
 }
 
 function updateScore(score){
