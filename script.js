@@ -98,3 +98,31 @@ function resetGame(){
     h.disabled = false;
 
 }
+function getFormattedDate() {
+    const today = new Date();
+    const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+    let monthName = months[today.getMonth()];
+
+    let day = today.getDate();
+
+    let suffix = NaN
+    if (day === 1 || day === 21 || day === 31){
+        suffix = "st";
+    } else if (day === 2 || day === 22){
+        suffix = "nd";
+    } else if (day === 3 || day === 23){
+        suffix = "rd";
+    } else {
+        suffix = "th";
+    }
+
+    return monthName + " " + day + suffix + ", " + today.getFullYear();
+}
+
+document.getElementById("date").textContent = "Date: " + getFormattedDate();
+
+setInterval(function(){
+    const now = new Date();
+    document.getElementById("date").textContent = "Date: " + getFormattedDate() + " " + now.toLocaleTimeString();
+}, 1000);
