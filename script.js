@@ -47,7 +47,7 @@ function makeGuess(){
         msg.textContent = "Too low, " + playerName + " try again.";
     }
     else{
-        msg.textContent = "Too high, " + playerName " try again.";
+        msg.textContent = "Too high, " + playerName + " try again.";
     }
     
 }
