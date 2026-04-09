@@ -44,12 +44,23 @@ function makeGuess(){
         msg.textContent = "Correct " + playerName + " it took " + guessCount + " tries.";
         updateScore(guessCount);
         resetGame();
+        return;
     }
-    else if(guess < answer){
-        msg.textContent = "Too low, " + playerName + " try again.";
+    let hcwString = "";
+    let offset = Math.abs(guess-answer);
+    if (offset <= 2) {
+        hcwString = "hot";
+    } else if (offset <= 5) {
+        hcwString = "warm";
+    } else {
+        hcwString = "cold";
+    }
+
+    if(guess < answer){
+        msg.textContent = "Too low, " + playerName + " you are " + hcwString + " try again.";
     }
     else{
-        msg.textContent = "Too high, " + playerName + " try again.";
+        msg.textContent = "Too high, " + playerName + " you are " + hcwString + " try again.";
     }
     
 }
