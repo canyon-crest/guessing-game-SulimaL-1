@@ -1,6 +1,9 @@
 // add javascript here
 let answer = 0;
 let guessCount = 0;
+let playerName = prompt("What is your name?")
+playerName = playerName.charAt(0).toUpperCase() + playerName.slice(1).toLowerCase();
+
 const scores = [];
 
 document.getElementById("playBtn").addEventListener("click", play);
@@ -77,6 +80,3 @@ function resetGame(){
     h.disabled = false;
 
 }
-
-let playerName = prompt("What is your name?")
-playerName = playerName.charAt(0).toUpperCase() + playerName.slice(1).toLowerCase();
