@@ -2,8 +2,11 @@
 let answer = 0;
 let range = 0;
 let guessCount = 0;
-let playerName = prompt("What is your name?")
+let startMs = 0;
+let gameTimes = [];
+let playerName = prompt("What is your name?");
 playerName = playerName.charAt(0).toUpperCase() + playerName.slice(1).toLowerCase();
+
 
 const scores = [];
 
@@ -12,6 +15,7 @@ document.getElementById("guessBtn").addEventListener("click", makeGuess);
 document.getElementById("giveUpBtn").addEventListener("click", giveUp);
 
 function play(){
+    startMs = new Date().getTime();
     range = 0;
     let levels = document.getElementsByName("level")
 
@@ -87,6 +91,8 @@ function updateScore(score){
             lb[i].textContent = scores[i];
         }
     }
+
+    updateTimers(new Date().getTime());
 }
 function resetGame(){
     guess.textContent = "";
@@ -126,3 +132,18 @@ setInterval(function(){
     const now = new Date();
     document.getElementById("date").textContent = "Date: " + getFormattedDate() + " " + now.toLocaleTimeString();
 }, 1000);
+
+
+
+function updateTimers(endMs) {
+    let gameTime = endMs - startMs;
+    gameTimes.push(gameTime);
+    let tempSum = 0;
+    for (let i = 0; i < gameTimes.length; i++) {
+        tempSum += gameTimes[i];
+    }
+    avgTime.textContent = "Average Time: " + parseFloat((tempSum / gameTimes.length )/ 1000);
+    gameTimes.sort(function(a,b){return a-b;});
+    fastest.textContent = "Fastest Game: " + parseFloat(gameTimes[0] / 1000);
+
+}
