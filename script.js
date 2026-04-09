@@ -17,7 +17,7 @@ function play(){
         levels[i].disabled = true;
     }
 
-    document.getElementById("msg").textContent = "Guess a number 1-" +range;
+    document.getElementById("msg").textContent = playerName + " guess a number 1-" +range;
 
     answer = Math.floor(Math.random()*range) +1;
     guessCount = 0;
@@ -77,3 +77,6 @@ function resetGame(){
     h.disabled = false;
 
 }
+
+let playerName = prompt("What is your name?")
+playerName = playerName.charAt(0).toUpperCase() + playerName.slice(1).toLowerCase();
