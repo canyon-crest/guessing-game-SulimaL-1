@@ -147,3 +147,26 @@ function updateTimers(endMs) {
     fastest.textContent = "Fastest Game: " + parseFloat(gameTimes[0] / 1000);
 
 }
+
+
+document.getElementById("guessBtn").addEventListener("click", function() {
+    const guess = parseInt(document.getElementById("guess").value);
+    if (isNaN(guess) || guess == answer) {
+        document.body.style.backgroundColor = "";
+        return;
+    }
+    const offset = Math.abs(guess - answer);
+    if (offset <= 2)       document.body.style.backgroundColor = "#97c459"; // green = hot
+    else if (offset <= 5)  document.body.style.backgroundColor = "#fac775"; // orange = warm
+    else                   document.body.style.backgroundColor = "#f09595"; // red = cold
+});
+
+
+document.getElementById("giveUpBtn").addEventListener("click", function() {
+    document.body.style.backgroundColor = "";
+});
+
+
+document.addEventListener("keydown", function(e) {
+    if (e.key === "Enter" && !guessBtn.disabled) guessBtn.click();
+});
