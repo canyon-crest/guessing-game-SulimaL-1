@@ -148,7 +148,7 @@ function updateTimers(endMs) {
 
 }
 
-
+//Above and beyond
 document.getElementById("guessBtn").addEventListener("click", function() {
     const guess = parseInt(document.getElementById("guess").value);
     if (isNaN(guess) || guess == answer) {
@@ -156,9 +156,9 @@ document.getElementById("guessBtn").addEventListener("click", function() {
         return;
     }
     const offset = Math.abs(guess - answer);
-    if (offset <= 2)       document.body.style.backgroundColor = "#97c459"; // green = hot
-    else if (offset <= 5)  document.body.style.backgroundColor = "#fac775"; // orange = warm
-    else                   document.body.style.backgroundColor = "#f09595"; // red = cold
+    if (offset <= 2)       document.body.style.backgroundColor = "#97c459"; 
+    else if (offset <= 5)  document.body.style.backgroundColor = "#fac775"; 
+    else                   document.body.style.backgroundColor = "#f09595"; 
 });
 
 
